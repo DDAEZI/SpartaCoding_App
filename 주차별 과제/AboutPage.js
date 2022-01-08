@@ -1,13 +1,26 @@
-import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Button} from 'react-native';
 
-export default function AboutPage(){
+export default function AboutPage({navigation, route}){
+    useEffect(()=>{
+        navigation.setOptions({
+            title:"소개 페이지",
+            headerStyle:{
+                backgroundColor:'#1F266A',
+                shadowColor:"#1F266A",
+            },
+            headerTintColor:'#fff',
+        })
+    },[])
     return(
         <View style={styles.container}>
+            <StatusBar style="light"/>
             <Text style={styles.title}>HI! 스파르타코딩 앱개발반에 오신것을 환영합니다
             </Text>
             <View style={styles.box}>
-                <Image source={require('sparta-myhoneytip-ddaezi/assets/aboutImage.png')}
+                <Image source={require('../assets/aboutImage.png')}
                  style={styles.aboutImage}/>
                  <Text style={styles.textOne}>
                     많은 내용을 간결하게 담아내려 노력했습니다!
@@ -27,7 +40,6 @@ const styles = StyleSheet.create({
     container: {
       flex:1,
       backgroundColor:"#1F266A",
-      marginTop:40,
       alignItems:'center'
     },
     title: {
